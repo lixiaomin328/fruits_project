@@ -1,4 +1,4 @@
-data = readtable('../data/manyfruits_pilot1.csv');
+data = readtable('../data/manyfruits_pilot2.csv');
 imgLists= {'flippedimg_4.jpg','flippedimg_6.jpg','flippedimg_8.jpg',...
 'flippedimg_21.jpg','flippedimg_36.jpg','flippedimg_42.jpg','flippedimg_46.jpg',...
 'flippedimg_27.jpg','flippedimg_29.jpg','flippedimg_45.jpg','flippedimg_10.jpg',...
@@ -16,10 +16,10 @@ nClicks = [];
 imgNames ={};
 subIds = [];
 for i = 0:length(imgLists)-1
+    nClicks=[nClicks;table2array(data(:,choicStartPlace+4+i*period))];
     responses=[responses;table2array(data(:,choicStartPlace+i*period))];
     RTs=[RTs;table2array(data(:,choicStartPlace+2+i*period))];
-    nClicks=[nClicks;table2array(data(:,choicStartPlace+4+i*period))];
     imgNames = [imgNames;repmat({imgLists{i+1}},length(subId),1)];
     subIds = [subIds;subId];
 end
-processedData = struct('imgName',imgNames,'subId',subIds,'response',responses,'rt',arrayfun(@(x){x} RTs),'nClicks',nClicks);
+processedData = struct('imgName',imgNames,'subId',subIds,'response',responses,'rt',arrayfun(@(x){x}, RTs),'nClicks',arrayfun(@(x){x}, nClicks));
