@@ -12,6 +12,7 @@ congruentIndicator = (sum(saliencyIndicator+valueSign,2)==1);
 congruentIndicator = (congruentIndicator-1)*-1;
 %0 is incongruent
 correctRate = [];
+nCount = [];
 for i = 1:length(imgNamefromExcel)
     imageName = [imgNamefromExcel{i},'.jpg'];
     indexC = find(strcmp({processedData.imgName},imageName));
@@ -26,9 +27,12 @@ for i = 1:length(imgNamefromExcel)
             processedData(indexC(j)).correctness=[];
         end
     end
-    correctRate = [correctRate;mean([processedData([indexC]).correctness])];       
+    correctRate = [correctRate;mean([processedData([indexC]).correctness])];
+    nCount = [nCount;length([processedData([indexC]).correctness])];
 end
-correctRatesSummary = struct('imgName',imgNamefromExcel,'congruency',arrayfun(@(x){x}, congruentIndicator),'valueDiffabs',arrayfun(@(x){x}, abs(valueDiff)),'correctRates',arrayfun(@(x){x},correctRate));
+correctRatesSummary = struct('imgName',imgNamefromExcel,'congruency',arrayfun(@(x){x}, ...
+congruentIndicator),'valueDiffabs',arrayfun(@(x){x}, abs(valueDiff)),'correctRates',...
+arrayfun(@(x){x},correctRate),'nCount',arrayfun(@(x){x}, nCount));
 correctRatesTable = struct2table(correctRatesSummary);
 
 tablecongruent = correctRatesTable(correctRatesTable.congruency==1,:);
