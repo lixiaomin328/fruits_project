@@ -1,6 +1,8 @@
-fileName = 'manyfruits_pilot2';
-load(['../processedData/',fileName,'.mat'])
-valueTable = readtable('../fruits.xlsx');
+fileName = 'decimals_report_data';
+opts = detectImportOptions('/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/fruits-3.xlsx','Sheet','Sheet5')
+opts.VariableNamesRange = 'A1';
+load(['/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/processedData/',fileName,'.mat'])
+valueTable = readtable('/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/fruits-3.xlsx',opts,'Sheet','Sheet5');
 imgNamefromExcel = valueTable.ImageName(1:end-1);
 valueDiff = valueTable.Difference(1:end-1);%value cannot have zeros
 saliencyLocation = valueTable.SalientSide(1:end-1);
@@ -14,7 +16,7 @@ congruentIndicator = (congruentIndicator-1)*-1;
 correctRate = [];
 nCount = [];
 for i = 1:length(imgNamefromExcel)
-    imageName = [imgNamefromExcel{i},'.jpg'];
+    imageName = [imgNamefromExcel{i}];
     indexC = find(strcmp({processedData.imgName},imageName));
     for j = 1:length(indexC)
         processedData(indexC(j)).congruency=congruentIndicator(i);
