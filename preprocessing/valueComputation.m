@@ -1,4 +1,4 @@
-fileName = 'manyfruits_pilot2';
+fileName = 'fruits_decimals.xlsx';
 load(['../processedData/',fileName,'.mat'])
 valueTable = readtable('../fruits.xlsx');
 imgNamefromExcel = valueTable.ImageName(1:end-1);
