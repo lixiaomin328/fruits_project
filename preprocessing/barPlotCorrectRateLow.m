@@ -1,4 +1,4 @@
-function [means,se,n] = barPlotCorrectRate(correctRatesTable)
+function [means,se,n] = barPlotCorrectRateLow(correctRatesTable)
 table = sortrows(correctRatesTable,'valueDiffabs');
 table = table(table.valueDiffabs<5,:); %low value difference
 nCongruent = table.nCount(table.congruency==1); %total number of n for congruency and incongruency
