@@ -1,0 +1,6 @@
+\babel@toc {UKenglish}{}
+\beamer@sectionintoc {1}{Motivation}{3}{0}{1}
+\beamer@sectionintoc {2}{Designs and Experiments}{4}{0}{2}
+\beamer@subsectionintoc {2}{1}{Experiment Design}{4}{0}{2}
+\beamer@subsectionintoc {2}{2}{Saliency}{5}{0}{2}
+\beamer@sectionintoc {3}{Result and Analysis}{7}{0}{3}
