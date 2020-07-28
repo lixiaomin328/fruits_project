@@ -1,0 +1,1 @@
+[meansLow, seLow] = barPlotCorrectRate(correctRatesTable);
