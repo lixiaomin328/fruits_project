@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 fileName = 'decimals_pilot1';
 opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
@@ -7,16 +6,6 @@ valueTable = readtable('../Stimulu_table/fruit_3.csv');
 imgNamefromExcel = valueTable.ImageName(1:end-1);
 valueDiff = valueTable.Difference(1:end-1);%value cannot have zeros
 saliencyLocation = valueTable.SalientSide(1:end-1);
-=======
-fileName = 'processed_decimals_25';
-opts = detectImportOptions('/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/fruits-3.xlsx','Sheet','Sheet5');
-opts.VariableNamesRange = 'A1';
-load(['/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/processedData/',fileName,'.mat'])
-valueTable = readtable('/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/fruits-3.xlsx',opts,'Sheet','Sheet5');
-imgNamefromExcel = valueTable.ImageName(1:20);
-valueDiff = valueTable.Difference(1:20);%value cannot have zeros
-saliencyLocation = valueTable.SalientSide(1:20);
->>>>>>> Stashed changes
 saliencyIndicator = strcmp('Left',saliencyLocation);
 
 valueSign = ones(length(valueDiff),1);
