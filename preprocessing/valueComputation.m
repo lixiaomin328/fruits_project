@@ -1,8 +1,8 @@
-fileName = 'decimals_report_data';
-opts = detectImportOptions('/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/fruits-3.xlsx','Sheet','Sheet5')
+fileName = 'decimals_pilot1';
+opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
-load(['/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/processedData/',fileName,'.mat'])
-valueTable = readtable('/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/fruits-3.xlsx',opts,'Sheet','Sheet5');
+load(['../processedData/',fileName,'.mat'])
+valueTable = readtable('../Stimulu_table/fruit_3.csv');
 imgNamefromExcel = valueTable.ImageName(1:end-1);
 valueDiff = valueTable.Difference(1:end-1);%value cannot have zeros
 saliencyLocation = valueTable.SalientSide(1:end-1);
