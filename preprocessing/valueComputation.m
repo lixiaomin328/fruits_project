@@ -2,7 +2,7 @@ fileName = 'decimals_pilot1';
 opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
 load(['../processedData/',fileName,'.mat'])
-valueTable = readtable('../Stimulu_table/fruit_3.csv');
+valueTable = readtable('../Stimulu_table/fruits_value_decimals.csv');
 imgNamefromExcel = valueTable.ImageName(1:end-1);
 valueDiff = valueTable.Difference(1:end-1);%value cannot have zeros
 saliencyLocation = valueTable.SalientSide(1:end-1);

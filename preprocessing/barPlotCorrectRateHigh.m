@@ -1,6 +1,6 @@
 function [means,se,n] = barPlotCorrectRateHigh(correctRatesTable)
 table = sortrows(correctRatesTable,'valueDiffabs');
-table = table(table.valueDiffabs>4,:); %low value difference
+table = table(table.valueDiffabs>0.55,:); %low value difference
 nCongruent = table.nCount(table.congruency==1); %total number of n for congruency and incongruency
 nIncongruent = table.nCount(table.congruency==0);
 positiveNumberCongr = table.nCount(table.congruency==1)'*table.correctRates(table.congruency==1);

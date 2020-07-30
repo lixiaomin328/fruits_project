@@ -1,4 +1,10 @@
-data <- read.csv('/Users/xiaominli/Documents/fruits_project/preprocessing/processedDataPilot1.csv')
+library(plm)
+library(lmtest)
+library(multiwayvcov)
+library(stargazer)
+library('stringr')
+
+data <- read.csv('/Users/xiaominli/Documents/fruits_project/processedData/processedDataPilot2_decimal.csv')
 data = data[data$nClicks>0,]
 data$y <- as.integer(str_detect(data$response,"Left"))
 data$choiceSaliency <- ifelse(data$y==data$saliencyLocation,1,0)
@@ -15,3 +21,9 @@ Model3 <- lm(rt ~ abs(valueDiff)+congruency, data = data)
 Model13 <- lm(rt ~ abs(valueDiff)*congruency, data = data)
 Model12 <- lm(rt ~ correctness, data = data)
 Model11 <- lm(rt ~ abs(valueDiff), data = data)
+
+m1 <- glm(correctness ~ congruency+abs(valueDiff), data = data,family = "binomial")
+vcov_subId <- cluster.vcov(m1, data$subId)
+coeftest(m1, vcov_subId)
+vcov_imgId <-cluster.vcov(m1,data$imgName)
+coeftest(m1,vcov_imgId)
