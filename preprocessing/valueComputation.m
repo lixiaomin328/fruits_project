@@ -1,11 +1,11 @@
-fileName = 'decimals_pilot1';
-opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
+fileName = '20sec';
+opts = detectImportOptions('Users/ninasolovyeva3/Documents/MATLAB/fruits_project/Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
-load(['../processedData/',fileName,'.mat'])
-valueTable = readtable('../Stimulu_table/fruits_value_decimals.csv');
-imgNamefromExcel = valueTable.ImageName(1:end-1);
-valueDiff = valueTable.Difference(1:end-1);%value cannot have zeros
-saliencyLocation = valueTable.SalientSide(1:end-1);
+load(['Users/ninasolovyeva3/Documents/MATLAB/fruits_project/processedData/',fileName,'.mat'])
+valueTable = readtable('Users/ninasolovyeva3/Documents/MATLAB/fruits_project/Stimulu_table/fruits-3.xlsx',opts,'Sheet', 'Sheet5');
+imgNamefromExcel = valueTable.ImageName(1:20);
+valueDiff = valueTable.Difference(1:20);%value cannot have zeros
+saliencyLocation = valueTable.SalientSide(1:20);
 saliencyIndicator = strcmp('Left',saliencyLocation);
 
 valueSign = ones(length(valueDiff),1);
