@@ -1,4 +1,4 @@
-fileName = 'data21';
+fileName = 'data3';
 opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
 load(['../processedData/',fileName,'.mat'])
@@ -10,9 +10,10 @@ saliencyIndicator = strcmp('Left',saliencyLocation);
 
 valueSign = ones(length(valueDiff),1);
 valueSign(valueDiff<0) =0;
-congruentIndicator = (sum(saliencyIndicator+valueSign,2)==1);
-congruentIndicator = (congruentIndicator-1)*-1;
-%0 is incongruent
+congruentIndicator = saliencyIndicator ==valueSign;
+% congruentIndicator = (sum(saliencyIndicator+valueSign,2)==1);
+% congruentIndicator = (congruentIndicator-1)*-1;
+% %0 is incongruent
 correctRate = [];
 nCount = [];
 for i = 1:length(imgNamefromExcel)
@@ -25,7 +26,7 @@ for i = 1:length(imgNamefromExcel)
         correctAnswer = (sign(valueDiff(i))+1)/2;
         responseInd =strcmp('Left',processedData(indexC(j)).response);
         processedData(indexC(j)).correctness=(responseInd==correctAnswer);
-        if processedData(indexC(j)).nClicks ==0
+        if processedData(indexC(j)).nClicks ==0 ||isempty(processedData(indexC(j)).response) 
            processedData(indexC(j)).correctness=[];
 %             processedData(indexC(j)).correctness=0;
 %             processedData(indexC(j)).nClicks=1;
@@ -47,8 +48,8 @@ tableincongruent = sortrows(tableincongruent,'valueDiffabs');
 
 total1 = sum(tablecongruent.nCount);
 total2 = sum(tableincongruent.nCount);
-n1 = round(tablecongruent.correctRates'*tablecongruent.nCount);
-n2 = round(tableincongruent.correctRates'*tableincongruent.nCount);
+n1 = tablecongruent.correctRates'*tablecongruent.nCount;
+n2 = tableincongruent.correctRates'*tableincongruent.nCount;
 x1 = [ones(sum(n1),1);zeros(total1 - sum(n1),1)];
 x2 = [ones(sum(n2),1);zeros(total2 - sum(n2),1)];
 p1 = n1/total1;

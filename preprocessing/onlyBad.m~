@@ -1,0 +1,12 @@
+fileName = 'data22';
+load(['../processedData/',fileName,'.mat'])
+load(['badId_',fileName,'.mat'])
+table = struct2table(processedData);
+for i = 1:size(table,1)
+    subName = table.subId{i};
+    if sum(strcmp(subName,badId))~=0
+        table(i,:) = [];
+    end
+end
+processedData = table2struct(table);
+save(['../processedData/',fileName,'.mat'],'processedData')
