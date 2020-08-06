@@ -1,4 +1,4 @@
-fileName = 'realtrial1';
+fileName = 'realtrial2';
 opts = detectImportOptions('Users/ninasolovyeva3/Documents/MATLAB/fruits_project/Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
 load(['Users/ninasolovyeva3/Documents/MATLAB/fruits_project/processedData/',fileName,'.mat'])
