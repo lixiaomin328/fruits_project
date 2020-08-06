@@ -1,11 +1,11 @@
-fileName = 'realtrial1';
-opts = detectImportOptions('Users/ninasolovyeva3/Documents/MATLAB/fruits_project/Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
+fileName = 'data2';
+opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
-load(['Users/ninasolovyeva3/Documents/MATLAB/fruits_project/processedData/',fileName,'.mat'])
-valueTable = readtable('Users/ninasolovyeva3/Documents/MATLAB/fruits_project/Stimulu_table/fruits-3.xlsx',opts,'Sheet', 'Sheet5');
-imgNamefromExcel = valueTable.ImageName(1:20);
-valueDiff = valueTable.Difference(1:20);%value cannot have zeros
-saliencyLocation = valueTable.SalientSide(1:20);
+load(['../processedData/',fileName,'.mat'])
+valueTable = readtable('../Stimulu_table/fruits-3.xlsx',opts,'Sheet', 'Sheet5');
+imgNamefromExcel = valueTable.Var1(:);
+valueDiff = valueTable.Var9(:);%value cannot have zeros
+saliencyLocation = valueTable.Var2(:);
 saliencyIndicator = strcmp('Left',saliencyLocation);
 
 valueSign = ones(length(valueDiff),1);
@@ -26,7 +26,10 @@ for i = 1:length(imgNamefromExcel)
         responseInd =strcmp('Left',processedData(indexC(j)).response);
         processedData(indexC(j)).correctness=(responseInd==correctAnswer);
         if processedData(indexC(j)).nClicks ==0
-            processedData(indexC(j)).correctness=[];
+           processedData(indexC(j)).correctness=[];
+            processedData(indexC(j)).correctness=0;
+            processedData(indexC(j)).nClicks=1;
+            processedData(indexC(j)).response='miss';
         end
     end
     correctRate = [correctRate;mean([processedData([indexC]).correctness])];

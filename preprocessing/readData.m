@@ -1,15 +1,15 @@
-data = readtable('../data/manyfruits_pilot2.csv');
-fileName = 'manyfruits_pilot2';
-load('img_pilot.mat')
+data = readtable('../data/data2.csv');
+fileName = 'data2';
+load('img_data.mat')
 % imgLists= {'flippedimg_4.jpg','flippedimg_6.jpg','flippedimg_8.jpg',...
 % 'flippedimg_21.jpg','flippedimg_36.jpg','flippedimg_42.jpg','flippedimg_46.jpg',...
 % 'flippedimg_27.jpg','flippedimg_29.jpg','flippedimg_45.jpg','flippedimg_10.jpg',...
 % 'flippedimg_3.jpg','flippedimg_11.jpg','img_2.jpg','img_3.jpg','img_4.jpg','img_11.jpg'...	
 % ,'img_14.jpg','img_16.jpg','img_19.jpg'};
-choicStartPlace=29;%the first chohice place
+choicStartPlace=48;%the first chohice place
 period = 5; %two choices position
 
-subId = data.PID;
+subId = data.Q93;
 
 %generate the table
 responses= [];
