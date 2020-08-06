@@ -1,4 +1,4 @@
-fileName = 'data2';
+fileName = 'decim';
 opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
 load(['../processedData/',fileName,'.mat'])
@@ -26,8 +26,10 @@ for i = 1:length(imgNamefromExcel)
         responseInd =strcmp('Left',processedData(indexC(j)).response);
         processedData(indexC(j)).correctness=(responseInd==correctAnswer);
         if processedData(indexC(j)).nClicks ==0
+           processedData(indexC(j)).correctness=[];
             processedData(indexC(j)).correctness=0;
-            processedData(indexC(j)).correctness=0;
+            processedData(indexC(j)).nClicks=1;
+            processedData(indexC(j)).response='miss';
         end
     end
     correctRate = [correctRate;mean([processedData([indexC]).correctness])];

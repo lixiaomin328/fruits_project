@@ -1,4 +1,4 @@
-fileName = 'data2';
+fileName = 'data21';
 opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
 load(['../processedData/',fileName,'.mat'])
@@ -27,9 +27,9 @@ for i = 1:length(imgNamefromExcel)
         processedData(indexC(j)).correctness=(responseInd==correctAnswer);
         if processedData(indexC(j)).nClicks ==0
            processedData(indexC(j)).correctness=[];
-            processedData(indexC(j)).correctness=0;
-            processedData(indexC(j)).nClicks=1;
-            processedData(indexC(j)).response='miss';
+%             processedData(indexC(j)).correctness=0;
+%             processedData(indexC(j)).nClicks=1;
+%             processedData(indexC(j)).response='miss';
         end
     end
     correctRate = [correctRate;mean([processedData([indexC]).correctness])];
@@ -44,3 +44,13 @@ tablecongruent = correctRatesTable(correctRatesTable.congruency==1,:);
 tablecongruent = sortrows(tablecongruent,'valueDiffabs');
 tableincongruent = correctRatesTable(correctRatesTable.congruency==0,:);
 tableincongruent = sortrows(tableincongruent,'valueDiffabs');
+
+total1 = sum(tablecongruent.nCount);
+total2 = sum(tableincongruent.nCount);
+n1 = round(tablecongruent.correctRates'*tablecongruent.nCount);
+n2 = round(tableincongruent.correctRates'*tableincongruent.nCount);
+x1 = [ones(sum(n1),1);zeros(total1 - sum(n1),1)];
+x2 = [ones(sum(n2),1);zeros(total2 - sum(n2),1)];
+p1 = n1/total1;
+p2= n2/total2;
+[h1,x,t1] = ttest2(x1,x2);
