@@ -1,4 +1,4 @@
-fileName = 'data3';
+fileName = 'dataCombin';
 opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
 load(['../processedData/',fileName,'.mat'])

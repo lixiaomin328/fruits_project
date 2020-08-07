@@ -4,7 +4,7 @@ library(multiwayvcov)
 library(stargazer)
 library('stringr')
 
-data <- read.csv('/Users/xiaominli/Documents/fruits_project/processedData/data2.csv')
+data <- read.csv('/Users/xiaominli/Documents/fruits_project/processedData/dataCombin.csv')
 data = data[data$nClicks>0,]
 data$y <- as.integer(str_detect(data$response,"Left"))
 data$choiceSaliency <- ifelse(data$y==data$saliencyLocation,1,0)
