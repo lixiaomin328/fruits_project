@@ -1,11 +1,11 @@
-%fileName = 'dataCombin';
+fileName = 'dataCombin';
 opts = detectImportOptions('../Stimulu_table/fruits-3.xlsx','Sheet','Sheet5');
 opts.VariableNamesRange = 'A1';
-%load(['../processedData/',fileName,'.mat'])
+load(['../processedData/',fileName,'.mat'])
 valueTable = readtable('../Stimulu_table/fruits-3.xlsx',opts,'Sheet', 'Sheet5');
-imgNamefromExcel = valueTable.ImageName(:);
-valueDiff = valueTable.Difference(:);%value cannot have zeros
-saliencyLocation = valueTable.SalientSide(:);
+imgNamefromExcel = valueTable.Var1(:);
+valueDiff = valueTable.Var9(:);%value cannot have zeros
+saliencyLocation = valueTable.Var2(:);
 saliencyIndicator = strcmp('Left',saliencyLocation);
 
 valueSign = ones(length(valueDiff),1);
