@@ -16,6 +16,8 @@ Model6 <- glm(y ~ saliencyLocation, data = data,family = "binomial")
 Model2 <- glm(correctness ~ congruency+abs(valueDiff)+congruency*abs(valueDiff), data = data,family = "binomial")
 Model9 <- glm(correctness ~ congruency+abs(valueDiff), data = data,family = "binomial")
 Model10 <- glm(correctness ~ rt+abs(valueDiff), data = data,family = "binomial")
+Model14 <- glm(correctness ~ abs(valueDiff), data = data,family = "binomial")
+
 
 Model3 <- lm(rt ~ abs(valueDiff)+congruency, data = data)
 Model13 <- lm(rt ~ abs(valueDiff)*congruency, data = data)
