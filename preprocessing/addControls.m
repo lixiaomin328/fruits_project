@@ -4,7 +4,7 @@ gender = data.Q98;
 income = data.Q99_4;
 education = data.Q100;
 processedData = readtable('../processedData/dataCombin.csv');
-incomes = cell(length(table2struct(processedData)),1);
+incomes = zeros(length(table2struct(processedData)),1);
 educations = cell(length(table2struct(processedData)),1);
 genders = cell(length(table2struct(processedData)),1);
 
@@ -14,7 +14,7 @@ for id = 1:length(subId)
     for i = 1:length(index)
         genders{index(i)} = gender{id}; 
         educations{index(i)} = education{id}; 
-        incomes{index(i)} = income{id}; 
+        incomes(index(i)) = income(id); 
     end
 end
 %incomes = str2num(incomes);

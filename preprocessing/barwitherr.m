@@ -112,10 +112,11 @@ if any(size(values) ~= size(lowerErrors))
 end
 
 [nRows nCols] = size(values);
-handles.bar = bar(varargin{:}); % standard implementation of bar fn
+handles.bar = bar(varargin{:});% standard implementation of bar fn
 hold on
 hBar = handles.bar;
-
+%hBar(1).FaceColor = [0.9 .4 0.2];
+%hBar(2).FaceColor = [0.4 0.8 0.8];
 if nRows > 1
     hErrorbar = zeros(1,nCols);
     for col = 1:nCols

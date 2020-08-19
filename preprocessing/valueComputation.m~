@@ -39,7 +39,7 @@ for i = 1:length(imgNamefromExcel)
     nCount = [nCount;length([processedData([indexC]).correctness])];
 end
 %%
-for subId = 1:length(table2struct(meanRT))
+for subId = 1:length(table2array(meanRT))
     subName = meanRT.Var1{subId};
     indexD = find(strcmp({processedData.subId},subName));
     aveRt = meanRT.Var2(subId);
