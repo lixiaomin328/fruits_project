@@ -4,7 +4,7 @@ library(multiwayvcov)
 library(stargazer)
 library('stringr')
 
-data <- read.csv('/Users/ninasolovyeva3/Documents/MATLAB/fruits_project/processedData/no_time_limit.csv')
+data <- read.csv('/Users/xiaominli/Documents/fruits_project/processedData/dataCombin.csv')
 data = data[data$nClicks>0,]
 data$y <- as.integer(str_detect(data$response,"Left"))
 data$choiceSaliency <- ifelse(data$y==data$saliencyLocation,1,0)
@@ -19,7 +19,7 @@ Model10 <- glm(correctness ~ rt+abs(valueDiff), data = data,family = "binomial")
 Model14 <- glm(correctness ~ abs(valueDiff), data = data,family = "binomial")
 
 
-Model3 <- lm(rt ~ abs(valueDiff)+congruency + abs(valueDiff)*congruency, data = data)
+Model3 <- lm(rt ~ abs(valueDiff)+congruency, data = data)
 Model13 <- lm(rt ~ abs(valueDiff)*congruency, data = data)
 Model12 <- lm(rt ~ correctness, data = data)
 Model11 <- lm(rt ~ abs(valueDiff), data = data)
